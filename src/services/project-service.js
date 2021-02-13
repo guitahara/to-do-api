@@ -10,6 +10,10 @@ class ProjectService {
     find = async (filter = {}, projection = {}) => {
         return this.#repository.find(filter, projection)
     }
+
+    update = async (filter = {}, data) => {
+        return this.#repository.update(filter, data)
+    }
 }
 
 module.exports = ProjectService

@@ -2,6 +2,7 @@ const ResponseUtils = require('../utils/response-util')
 const SchemaValidatorUtil = require('../utils/schema-validator-util')
 const { ProjectSchema, projectJoiSchema } = require('../schemas/project-schema')
 const ProjectBusiness = require('../bussiness/project-bussines')
+const ProjectFilterSchema = require('../schemas/project-filters.schema')
 
 class ProjectController {
     #bussiness = new ProjectBusiness()
@@ -20,14 +21,21 @@ class ProjectController {
 
             ResponseUtils.success201CreatedResponse(res, response);
         } catch (error) {
-            console.log(error)
             ResponseUtils.errorResponse(res, error);
         }
     }
 
     update = async (req,res) => {
         try {
-            const { body } = req
+            const { body, params, user, } = req
+
+            const schemaValidator = new SchemaValidatorUtil(projectJoiSchema)
+            schemaValidator.validate(body)
+
+            const filter = new ProjectFilterSchema(params._id, user._id)
+
+            const response = await this.#bussiness.update(filter, body)
+
             ResponseUtils.success200OKResponde(res, response);
         } catch (error) {
             console.log(error)

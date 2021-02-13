@@ -11,10 +11,8 @@ class ProjectRepository {
         return Project.find(filter, projection)
     }
     
-    update = async (data) => {
-        const project = new Project(data)
-        project.isNew = false
-        return project.save()
+    update = async (filter, data) => {
+        return Project.findOneAndUpdate(filter, data)
     }
     
     remove = async (_id, userId) => {
