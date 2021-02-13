@@ -14,6 +14,10 @@ class ProjectService {
     update = async (filter = {}, data) => {
         return this.#repository.update(filter, data)
     }
+
+    remove = async (filter = {}) => {
+        return this.#repository.remove(filter)
+    }
 }
 
 module.exports = ProjectService

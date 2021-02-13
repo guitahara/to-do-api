@@ -15,8 +15,8 @@ class ProjectRepository {
         return Project.findOneAndUpdate(filter, data)
     }
     
-    remove = async (_id, userId) => {
-        return Project.deleteOne({ _id: new ObjectId(_id), userId: new ObjectId(userId) })
+    remove = async (filter) => {
+        return Project.deleteOne(filter)
     }
 }
 

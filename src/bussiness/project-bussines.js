@@ -15,6 +15,13 @@ class ProjectBusiness {
 
         return response
     }
+
+    remove = async (filter) => {
+        const response = await this.#service.remove(filter)
+        if(!response.deletedCount) throw new NotFoundException()
+
+        return response
+    }
 }
 
 module.exports = ProjectBusiness

@@ -27,7 +27,7 @@ class ProjectController {
 
     update = async (req,res) => {
         try {
-            const { body, params, user, } = req
+            const { body, params, user } = req
 
             const schemaValidator = new SchemaValidatorUtil(projectJoiSchema)
             schemaValidator.validate(body)
@@ -45,6 +45,12 @@ class ProjectController {
 
     remove = async (req,res) => {
         try {
+            const { params, user } = req
+
+            const filter = new ProjectFilterSchema(params._id, user._id)
+
+            const response = await this.#bussiness.remove(filter)
+
             ResponseUtils.success204NoContentResponse(res, response);
         } catch (error) {
             console.log(error)
