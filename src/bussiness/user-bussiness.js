@@ -3,7 +3,7 @@ const UserService = require('../services/user-service')
 class UserBusiness {
     #service = new UserService()
 
-    login = async (loginSchema) => {
+    create = async (userSchema) => {
         return this.#service.create(userSchema)
     }
 }

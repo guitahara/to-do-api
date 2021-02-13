@@ -10,9 +10,8 @@ class TokenUtil {
     
     verifyToken = token => {
         try {
-            jwt.verify(token, this.secret)
+            return jwt.verify(token, this.secret)
         } catch (error) {
-            console.log(error)
             throw new UnauthorizedException()
         }
     }
