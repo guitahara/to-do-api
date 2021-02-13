@@ -9,17 +9,16 @@ class TaskBusiness {
         return this.#service.create(taskSchema, projectFilterSchema)
     }
 
-    update = async (filter, data) => {
+    update = async (taskFilter, data) => {
         if(data.done) data.finishDate = new Date()
-        const response = await this.#service.update(filter, data)
+        const response = await this.#service.update(taskFilter, data)
         if(!response) throw new NotFoundException()
 
         return response
     }
 
-    remove = async (filter) => {
-        const response = await this.#service.remove(filter)
-        if(!response.deletedCount) throw new NotFoundException()
+    remove = async (taskFilter) => {
+        const response = await this.#service.remove(taskFilter)
 
         return response
     }

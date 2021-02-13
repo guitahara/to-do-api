@@ -40,8 +40,23 @@ class TaskService {
         return this.#repository.update(taskFilter,{tasks: project.tasks})
     }
 
-    remove = async (filter = {}) => {
-        return this.#repository.remove(filter)
+    remove = async (taskFilter) => {
+        const projects = await this.#repository.find(taskFilter)
+        if(!projects.length) throw new NotFoundException()
+
+        const project = projects[0]
+
+        project.tasks =  project.tasks.filter(task => {
+            const taskId = task._id.toString()
+            const updateTaskId = taskFilter['tasks._id'].toString()
+            if(taskId === updateTaskId){
+                if(task.done === true ) throw new NotFoundException()
+                return false
+            }
+            return true
+        })
+            
+        return this.#repository.update(taskFilter,{tasks: project.tasks})
     }
 }
 

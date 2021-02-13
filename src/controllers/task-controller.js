@@ -53,6 +53,10 @@ class TaskController {
         try {
             const { params, user } = req
 
+            const taskFilterSchema = new TaskFilterSchema(params.projectId, user.id, params._id)
+
+            const response = await this.#bussiness.remove(taskFilterSchema)
+
             ResponseUtils.success204NoContentResponse(res, response);
         } catch (error) {
             console.log(error)

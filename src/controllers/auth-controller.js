@@ -20,7 +20,6 @@ class AuthController {
 
             ResponseUtils.success200OKResponde(res, response);
         } catch (error) {
-            console.log(error)
             ResponseUtils.errorResponse(res, error);
         }
     }

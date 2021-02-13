@@ -38,7 +38,6 @@ class ProjectController {
 
             ResponseUtils.success200OKResponde(res, response);
         } catch (error) {
-            console.log(error)
             ResponseUtils.errorResponse(res, error);
         }
     }
@@ -53,7 +52,6 @@ class ProjectController {
 
             ResponseUtils.success204NoContentResponse(res, response);
         } catch (error) {
-            console.log(error)
             ResponseUtils.errorResponse(res, error);
         }
     }
@@ -66,7 +64,6 @@ class ProjectController {
 
             ResponseUtils.success200OKResponde(res, response);
         } catch (error) {
-            console.log(error)
             ResponseUtils.errorResponse(res, error);
         }
     }
