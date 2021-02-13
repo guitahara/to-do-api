@@ -6,20 +6,20 @@ const UnauthorizedException = require('../configs/exceptions/unauthorized-except
 
 
 const authorize = async (req, res, next) => {
-  try {
-    const isPublic = PUBLIC_RESOURCES.find(resource => resource.path === req.originalUrl)
-    if (isPublic) { next() } 
-    else {
-        let token = req.get('Authorization')
-        if(!token) throw new UnauthorizedException()
-        
-        token = token.split(' ')[1]
-        req.user = tokenUtil.verifyToken(token)
-        next()
+    try {
+        const isPublic = PUBLIC_RESOURCES.find(resource => resource.path === req.originalUrl)
+        if (isPublic) { next() } 
+        else {
+            let token = req.get('Authorization')
+            if(!token) throw new UnauthorizedException()
+            
+            token = token.split(' ')[1]
+            req.user = tokenUtil.verifyToken(token)
+            next()
+        }
+    } catch (error) {
+        ResponseUtils.errorResponse(res, error);
     }
-  } catch (error) {
-    ResponseUtils.errorResponse(res, error);
-  }
 }
 
 module.exports = authorize
