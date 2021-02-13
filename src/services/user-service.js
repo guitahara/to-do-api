@@ -6,6 +6,10 @@ class UserService {
     create = async(userSchema) => {
         return this.#repository.create(userSchema)
     }
+
+    find = async (filter = {}, projection = {}) => {
+        return this.#repository.find(filter, projection)
+    }
 }
 
 module.exports = UserService
