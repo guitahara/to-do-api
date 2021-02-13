@@ -1,0 +1,19 @@
+{
+  "name": "to-do-api",
+  "version": "1.0.0",
+  "description": "A simple task manager",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/guitahara/to-do-api.git"
+  },
+  "author": "Guilherme Tahara Benedeti",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/guitahara/to-do-api/issues"
+  },
+  "homepage": "https://github.com/guitahara/to-do-api#readme"
+}
