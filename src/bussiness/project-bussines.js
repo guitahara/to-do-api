@@ -22,6 +22,10 @@ class ProjectBusiness {
 
         return response
     }
+
+    find = async (userId) => {
+        return this.#service.find({userId})
+    }
 }
 
 module.exports = ProjectBusiness

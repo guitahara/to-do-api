@@ -15,7 +15,7 @@ class ProjectController {
             schemaValidator.validate(body)
 
             const projectSchema = new ProjectSchema()
-            projectSchema.buildWithCreateRequestData({...body, _id: user._id})
+            projectSchema.buildWithCreateRequestData({...body, userId: user.id})
 
             const response = await this.#bussiness.create(projectSchema)
 
@@ -32,7 +32,7 @@ class ProjectController {
             const schemaValidator = new SchemaValidatorUtil(projectJoiSchema)
             schemaValidator.validate(body)
 
-            const filter = new ProjectFilterSchema(params._id, user._id)
+            const filter = new ProjectFilterSchema(params._id, user.id)
 
             const response = await this.#bussiness.update(filter, body)
 
@@ -47,11 +47,24 @@ class ProjectController {
         try {
             const { params, user } = req
 
-            const filter = new ProjectFilterSchema(params._id, user._id)
+            const filter = new ProjectFilterSchema(params._id, user.id)
 
             const response = await this.#bussiness.remove(filter)
 
             ResponseUtils.success204NoContentResponse(res, response);
+        } catch (error) {
+            console.log(error)
+            ResponseUtils.errorResponse(res, error);
+        }
+    }
+
+    find = async (req,res) => {
+        try {
+            const { user } = req
+
+            const response = await this.#bussiness.find(user.id)
+
+            ResponseUtils.success200OKResponde(res, response);
         } catch (error) {
             console.log(error)
             ResponseUtils.errorResponse(res, error);

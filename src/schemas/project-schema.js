@@ -9,7 +9,7 @@ class ProjectSchema {
 
     buildWithCreateRequestData = (data) => {
         this.name = data.name
-        this.userId = data._id
+        this.userId = data.userId
     }
 }
 
