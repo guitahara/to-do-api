@@ -11,6 +11,8 @@ class Database {
         await mongoose.connect(process.env.MONGO_CONNECTION, {
           useNewUrlParser: true,
           useUnifiedTopology: true,
+          useCreateIndex: true,
+          useFindAndModify: false,
           auth: { authdb: 'admin' }
         })
         console.log('\x1b[33m%s\x1b[0m', 'Connected to mongodb')

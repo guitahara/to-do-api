@@ -34,13 +34,7 @@ class ResponseUtils {
     }
 
     static error500Response(res, err) {
-        let body
-
-        if (err.message) {
-            body = new ErrorSchema(err.message, err.errorCode)
-        }
-
-        return res.status(HTTP_STATUS.INTERNAL_SERVER_ERROR).set(headers).send(body)
+        return res.status(HTTP_STATUS.INTERNAL_SERVER_ERROR).set(headers).send("Internal Server Error")
     }
 }
 
