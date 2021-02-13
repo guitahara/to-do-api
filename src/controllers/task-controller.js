@@ -35,6 +35,13 @@ class TaskController {
         try {
             const { body, params, user } = req
 
+            const schemaValidator = new SchemaValidatorUtil(taskJoiSchema)
+            schemaValidator.validate(body)
+
+            const taskFilterSchema = new TaskFilterSchema(params.projectId, user.id, params._id)
+
+            const response = await this.#bussiness.update(taskFilterSchema, body)
+
             ResponseUtils.success200OKResponde(res, response);
         } catch (error) {
             console.log(error)

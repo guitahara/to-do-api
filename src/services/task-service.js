@@ -1,6 +1,5 @@
 const NotFoundException = require('../configs/exceptions/not-found-exception')
 const ProjectRepository = require('../repositories/project-repository')
-const { ProjectSchema } = require('../schemas/project-schema')
 
 class TaskService {
     #repository = new ProjectRepository()
@@ -10,8 +9,6 @@ class TaskService {
         if(!projects.length) throw new NotFoundException()
 
         const project = projects[0]
-    
-        console.log(taskSchema)
 
         project.tasks.push(taskSchema)
 
@@ -22,8 +19,25 @@ class TaskService {
         return this.#repository.find(filter, projection)
     }
 
-    update = async (filter = {}, data) => {
-        return this.#repository.update(filter, data)
+    update = async (taskFilter, data) => {
+        const projects = await this.#repository.find(taskFilter)
+        if(!projects.length) throw new NotFoundException()
+
+        const project = projects[0]
+
+        project.tasks =  project.tasks.map(task => {
+            const taskId = task._id.toString()
+            const updateTaskId = taskFilter['tasks._id'].toString()
+            if(taskId === updateTaskId){
+                if(task.done === true ) throw new NotFoundException()
+                for(let field in data){
+                    task[field] = data[field]
+                }
+            }
+            return task
+        })
+            
+        return this.#repository.update(taskFilter,{tasks: project.tasks})
     }
 
     remove = async (filter = {}) => {
