@@ -1,4 +1,5 @@
 const HTTP_STATUS = require('../enum/http-status-enum')
+const ERROR_MESSAGES = require('../configs/exceptions/error-messages')
 const ErrorSchema = require('../schemas/error-schema')
 const headers = { 'Access-Control-Allow-Origin': '*' }
 
@@ -34,7 +35,7 @@ class ResponseUtils {
     }
 
     static error500Response(res, err) {
-        return res.status(HTTP_STATUS.INTERNAL_SERVER_ERROR).set(headers).send("Internal Server Error")
+        return res.status(HTTP_STATUS.INTERNAL_SERVER_ERROR).set(headers).send({message: ERROR_MESSAGES.INTERNAL_SERVER_ERROR})
     }
 }
 
