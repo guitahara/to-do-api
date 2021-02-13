@@ -2,7 +2,7 @@ const ResponseUtils = require('../utils/response-util')
 const SchemaValidatorUtil = require('../utils/schema-validator-util')
 const { ProjectSchema, projectJoiSchema } = require('../schemas/project-schema')
 const ProjectBusiness = require('../bussiness/project-bussines')
-const ProjectFilterSchema = require('../schemas/project-filters.schema')
+const ProjectFilterSchema = require('../schemas/project-filter-schema')
 
 class ProjectController {
     #bussiness = new ProjectBusiness()
