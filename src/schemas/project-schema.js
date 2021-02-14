@@ -17,4 +17,4 @@ const projectJoiSchema = Joi.object().keys({
     name: Joi.string().required()
 })
 
-module.exports = {ProjectSchema, projectJoiSchema}
+module.exports = { ProjectSchema, projectJoiSchema }
