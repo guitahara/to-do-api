@@ -20,7 +20,6 @@ class UserController {
 
             ResponseUtils.success201CreatedResponse(res, response);
         } catch (error) {
-            console.log(error)
             ResponseUtils.errorResponse(res, error);
         }
     }
