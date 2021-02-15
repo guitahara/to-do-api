@@ -10,9 +10,9 @@ class TaskBusiness {
     }
 
     update = async (taskFilter, data) => {
-        if(data.done) data.finishDate = new Date()
+        if (data.done) data.finishDate = new Date()
         const response = await this.#service.update(taskFilter, data)
-        if(!response) throw new NotFoundException()
+        if (!response) throw new NotFoundException()
 
         return response
     }

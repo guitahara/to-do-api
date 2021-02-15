@@ -7,7 +7,7 @@ const ProjectFilterSchema = require('../schemas/project-filter-schema')
 class ProjectController {
     #bussiness = new ProjectBusiness()
 
-    create = async (req,res) => {
+    create = async (req, res) => {
         try {
             const { body, user } = req
 
@@ -15,7 +15,7 @@ class ProjectController {
             schemaValidator.validate(body)
 
             const projectSchema = new ProjectSchema()
-            projectSchema.buildWithCreateRequestData({...body, userId: user.id})
+            projectSchema.buildWithCreateRequestData({ ...body, userId: user.id })
 
             const response = await this.#bussiness.create(projectSchema)
 
@@ -25,7 +25,7 @@ class ProjectController {
         }
     }
 
-    update = async (req,res) => {
+    update = async (req, res) => {
         try {
             const { body, params, user } = req
 
@@ -42,7 +42,7 @@ class ProjectController {
         }
     }
 
-    remove = async (req,res) => {
+    remove = async (req, res) => {
         try {
             const { params, user } = req
 
@@ -56,7 +56,7 @@ class ProjectController {
         }
     }
 
-    find = async (req,res) => {
+    find = async (req, res) => {
         try {
             const { user } = req
 

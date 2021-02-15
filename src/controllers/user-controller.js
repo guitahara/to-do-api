@@ -6,10 +6,10 @@ const UserBusiness = require('../bussiness/user-bussiness')
 class UserController {
     #bussiness = new UserBusiness()
 
-    create = async (req,res) => {
+    create = async (req, res) => {
         try {
             const { body } = req
-            
+
             const schemaValidator = new SchemaValidatorUtil(userJoiSchema)
             schemaValidator.validate(body)
 

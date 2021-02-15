@@ -35,7 +35,7 @@ class ResponseUtils {
     }
 
     static error500Response(res, err) {
-        return res.status(HTTP_STATUS.INTERNAL_SERVER_ERROR).set(headers).send({message: ERROR_MESSAGES.INTERNAL_SERVER_ERROR})
+        return res.status(HTTP_STATUS.INTERNAL_SERVER_ERROR).set(headers).send({ message: ERROR_MESSAGES.INTERNAL_SERVER_ERROR })
     }
 }
 

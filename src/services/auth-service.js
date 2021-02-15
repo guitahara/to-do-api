@@ -6,8 +6,8 @@ class AuthService {
 
     validateCredential = async (credentialSchema, user) => {
         const valid = user.comparePassword(credentialSchema.password)
-        
-        if(valid) {
+
+        if (valid) {
             const tokenUtil = new TokenUtil()
             const token = tokenUtil.generateToken({
                 id: user._id,
@@ -16,8 +16,8 @@ class AuthService {
             })
 
             const authResponseSchema = new AuthResponseSchema()
-            authResponseSchema.buildWithDatabase({name: user.name, userName: user.userName, token})
-            
+            authResponseSchema.buildWithDatabase({ name: user.name, userName: user.userName, token })
+
             return authResponseSchema
         } else {
             throw new UnauthorizedException()

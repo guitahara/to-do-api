@@ -3,7 +3,7 @@ const ProjectRepository = require('../repositories/project-repository')
 class ProjectService {
     #repository = new ProjectRepository()
 
-    create = async(userSchema) => {
+    create = async (userSchema) => {
         return this.#repository.create(userSchema)
     }
 

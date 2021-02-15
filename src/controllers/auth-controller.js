@@ -6,10 +6,10 @@ const AuthBusiness = require('../bussiness/auth-bussiness')
 class AuthController {
     #bussiness = new AuthBusiness()
 
-    login = async (req,res) => {
+    login = async (req, res) => {
         try {
             const { body } = req
-            
+
             const schemaValidator = new SchemaValidatorUtil(credentialJoiSchema)
             schemaValidator.validate(body)
 

@@ -11,20 +11,20 @@ class ProjectBusiness {
 
     update = async (filter, data) => {
         const response = await this.#service.update(filter, data)
-        if(!response) throw new NotFoundException()
+        if (!response) throw new NotFoundException()
 
         return response
     }
 
     remove = async (filter) => {
         const response = await this.#service.remove(filter)
-        if(!response.deletedCount) throw new NotFoundException()
+        if (!response.deletedCount) throw new NotFoundException()
 
         return response
     }
 
     find = async (userId) => {
-        return this.#service.find({userId})
+        return this.#service.find({ userId })
     }
 }
 

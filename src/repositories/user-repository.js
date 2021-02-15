@@ -1,4 +1,4 @@
-const User = require('./models/user-model') 
+const User = require('./models/user-model')
 const { UserSchema } = require('../schemas/user-schema')
 const MongodbErrorValidatorUtil = require('../utils/mongodb-error-validator-util')
 class UserRepository {
@@ -15,8 +15,8 @@ class UserRepository {
         }
     }
 
-    async find(filter={}, projection={}) {
-        return User.find(filter, projection={})
+    async find(filter = {}, projection = {}) {
+        return User.find(filter, projection = {})
     }
 }
 

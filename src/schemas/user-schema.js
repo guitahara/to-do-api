@@ -1,7 +1,7 @@
 const Joi = require('joi')
 
 class UserSchema {
-    constructor(){
+    constructor() {
         this.name
         this.userName
     }

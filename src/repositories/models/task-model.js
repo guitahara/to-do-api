@@ -7,4 +7,4 @@ const taskSchema = new mongoose.Schema({
     finishDate: Date
 })
 
-module.exports = {taskSchema, Task:mongoose.model('task', taskSchema, 'tasks')}
+module.exports = { taskSchema, Task: mongoose.model('task', taskSchema, 'tasks') }
