@@ -8,7 +8,7 @@ const ProjectFilterSchema = require('../schemas/project-filter-schema')
 class TaskController {
     #bussiness = new TaskBusiness()
 
-    create = async (req,res) => {
+    create = async (req, res) => {
         try {
             const { body, user, params } = req
 
@@ -17,7 +17,7 @@ class TaskController {
 
             const taskSchema = new TaskSchema()
             taskSchema.buildWithCreateRequestData({
-                ...body, 
+                ...body,
                 projectId: params.projectId,
             })
 
@@ -31,7 +31,7 @@ class TaskController {
         }
     }
 
-    update = async (req,res) => {
+    update = async (req, res) => {
         try {
             const { body, params, user } = req
 
@@ -48,7 +48,7 @@ class TaskController {
         }
     }
 
-    remove = async (req,res) => {
+    remove = async (req, res) => {
         try {
             const { params, user } = req
 

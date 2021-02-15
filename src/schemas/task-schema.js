@@ -26,7 +26,7 @@ class TaskSchema {
 
 const taskJoiSchema = Joi.object().keys({
     description: Joi.string().required(),
-    projectId: Joi.string().required()
+    projectId: Joi.string()
 })
 
-module.exports = {TaskSchema, taskJoiSchema}
+module.exports = { TaskSchema, taskJoiSchema }
